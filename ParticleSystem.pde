@@ -3,9 +3,10 @@ class ParticleSystem {
   FlowField flowfield;
   color c;
 
-  ParticleSystem() {
+  ParticleSystem(UnfoldingMap map_) {
     particles = new ArrayList<Particle>();
-    flowfield = new FlowField(30);
+    flowfield = new FlowField(30, map_);
+    flowfield.init();
     c = color(255, 100, 100);
     
    // for(int i = 0; i < 40000; i++){
@@ -26,6 +27,8 @@ class ParticleSystem {
     for(int i = 0; i < 200; i++){
     addParticle(c);
     }
+    
+    flowfield.display();
     
     Iterator<Particle> it = particles.iterator();
     while (it.hasNext ()) {

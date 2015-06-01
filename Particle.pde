@@ -15,6 +15,7 @@ class Particle {
     maxspeed = random(2, 5);
     maxforce = random(0.1, 0.5);
     lifespan = 150;
+    
     c = color(255);
     //c = color(random(255), random(255), random(255));
   }

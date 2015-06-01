@@ -1,18 +1,29 @@
 class FlowField {
+  DataFetcher df;
   PVector[][] field;
   int cols, rows;
   int resolution;
 
-  FlowField(int r) {
+  FlowField(int r, UnfoldingMap map_) {
+   
     resolution = r;
     cols = width/resolution;
     rows = height/resolution;
     field = new PVector[cols][rows];
+     df = new DataFetcher(map_, cols, rows, resolution);
     init();
   }
 
   void init() {
+    
+    for(int i = 0; i < cols; i++){
+     for(int j = 0; j < rows; j++){
+       field[i][j] = df.getVector(i, j);
+     }
+    }
+    
     //noise:
+    /*
     noiseSeed((int)random(10000));
     float xoff = 0;
     for (int i = 0; i < cols; i++) {
@@ -24,7 +35,7 @@ class FlowField {
         yoff += 0.1;
       }
       xoff += 0.1;
-    }
+    }*/
     
     //random:
    /* for (int i = 0; i < cols; i++) {
