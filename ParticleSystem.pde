@@ -6,6 +6,11 @@ class ParticleSystem {
   ParticleSystem() {
     particles = new ArrayList<Particle>();
     flowfield = new FlowField(30);
+    c = color(255, 100, 100);
+    
+   // for(int i = 0; i < 40000; i++){
+     //addParticle(c); 
+   // }
   }
 
   void addParticle(color c) {
@@ -13,10 +18,9 @@ class ParticleSystem {
   }
 
   void run() {
-    if(frameCount%100 == 0){
+    if(frameCount%200 == 0){
      flowfield.init(); 
-     c = color(random(255), random(255), random(255));
-     background(0);
+     //c = color(random(255), random(255), random(255));
     }
     
     for(int i = 0; i < 200; i++){

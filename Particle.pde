@@ -15,7 +15,7 @@ class Particle {
     maxspeed = random(2, 5);
     maxforce = random(0.1, 0.5);
     lifespan = 150;
-    //c = color(255);
+    c = color(255);
     //c = color(random(255), random(255), random(255));
   }
 
@@ -42,7 +42,7 @@ class Particle {
     velocity.limit(maxspeed);
     location.add(velocity);
     acceleration.mult(0);
-    lifespan -= 2.0;
+   lifespan -= 2.0;
   }
 
   void display() {

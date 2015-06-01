@@ -10,13 +10,14 @@ import java.util.Iterator;
 ParticleSystem ps;
 
 void setup() {
-  size(displayWidth, displayHeight, P2D);
+  size(displayWidth/2, displayHeight/2, P2D);
   ps = new ParticleSystem();
   blendMode(ADD);
+  smooth();
 }
 
 void draw() {
 
-  //background(0);
+  background(0);
   ps.run();
 }
