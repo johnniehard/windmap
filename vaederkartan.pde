@@ -30,11 +30,15 @@ UnfoldingMap map;
 void setup() {
   size(displayWidth, displayHeight, P2D);
 
- // blendMode(ADD);
+ //blendMode(ADD);
  // smooth();
  noSmooth();
  
- map = new UnfoldingMap(this, new Microsoft.AerialProvider());
+ //map = new UnfoldingMap(this, new Microsoft.AerialProvider());
+// map = new UnfoldingMap(this, new EsriProvider.WorldGrayCanvas());
+  //map = new UnfoldingMap(this, new EsriProvider.DeLorme());
+   map = new UnfoldingMap(this, new AcetateProvider.Basemap());
+ 
  //MapUtils.createDefaultEventDispatcher(this, map);
  map.zoomAndPanTo(new Location(63, 15), 5);
    ps = new ParticleSystem(map);

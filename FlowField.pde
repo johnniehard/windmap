@@ -10,6 +10,8 @@ class FlowField {
     cols = width/resolution;
     rows = height/resolution;
     field = new PVector[cols][rows];
+    println("num vectors in field: "+cols*rows);
+    println("resolution: "+r);
      df = new DataFetcher(map_, cols, rows, resolution);
     init();
   }

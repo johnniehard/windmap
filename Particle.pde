@@ -14,9 +14,9 @@ class Particle {
     velocity = new PVector(0, 0);
     maxspeed = random(2, 5);
     maxforce = random(0.1, 0.5);
-    lifespan = 150;
-    
-    c = color(255);
+    lifespan = 75;
+
+    c = color(0);
     //c = color(random(255), random(255), random(255));
   }
 
@@ -43,7 +43,7 @@ class Particle {
     velocity.limit(maxspeed);
     location.add(velocity);
     acceleration.mult(0);
-   lifespan -= 2.0;
+    lifespan -= 2.0;
   }
 
   void display() {
@@ -56,10 +56,16 @@ class Particle {
   }
 
   void borders() {
+    /*
     if (location.x < 0) location.x = width;
-    if (location.y < 0) location.y = height;
-    if (location.x > width) location.x = 0;
-    if (location.y > height) location.y = 0;
+     if (location.y < 0) location.y = height;
+     if (location.x > width) location.x = 0;
+     if (location.y > height) location.y = 0;
+     */
+    if (location.x < 0) lifespan = 0.0;
+    if (location.y < 0) lifespan = 0.0;
+    if (location.x > width) lifespan = 0.0;
+    if (location.y > height) lifespan = 0.0;
   }
 
   boolean isDead() {
