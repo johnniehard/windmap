@@ -1,5 +1,6 @@
 class FlowField {
   DataFetcher df;
+  DataSaver ds;
   PVector[][] field;
   int cols, rows;
   int resolution;
@@ -13,6 +14,7 @@ class FlowField {
     println("num vectors in field: "+cols*rows);
     println("resolution: "+r);
      df = new DataFetcher(map_, cols, rows, resolution);
+     //ds = new DataSaver(map_, cols, rows, resolution);
     init();
   }
 
@@ -20,9 +22,13 @@ class FlowField {
     
     for(int i = 0; i < cols; i++){
      for(int j = 0; j < rows; j++){
-       field[i][j] = df.getVector(i, j);
+       //field[i][j] = df.getVector(i, j);
+       field[i][j] = df.getVector(df.getFromFile(i, j));
+      // ds.addVector(i, j);
      }
     }
+    //ds.saveIt();
+    
     
     //noise:
     /*

@@ -5,7 +5,7 @@ class ParticleSystem {
 
   ParticleSystem(UnfoldingMap map_) {
     particles = new ArrayList<Particle>();
-    flowfield = new FlowField(100, map_);
+    flowfield = new FlowField(40, map_);
     c = color(255, 100, 100);
     
    // for(int i = 0; i < 40000; i++){

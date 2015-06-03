@@ -5,6 +5,7 @@ class Particle {
   float maxforce;
   float maxspeed;
   float lifespan;
+  PVector desired;
   color c;
 
   Particle(color c_) {
@@ -12,11 +13,11 @@ class Particle {
     location = new PVector(random(width), random(height));
     acceleration = new PVector(0, 0);
     velocity = new PVector(0, 0);
-    maxspeed = random(2, 5);
-    maxforce = random(0.1, 0.5);
-    lifespan = 75;
+  // maxspeed = 5;
+   maxforce = 0.2;  
+    lifespan = 100;
 
-    c = color(0);
+  c = color(100);
     //c = color(random(255), random(255), random(255));
   }
 
@@ -27,9 +28,12 @@ class Particle {
   }
 
   void follow(FlowField flow) {
-    PVector desired = flow.lookup(location);
+    desired = flow.lookup(location);
+    maxspeed = desired.mag()/2;
     desired.mult(maxspeed);
+    //
     PVector steer = PVector.sub(desired, velocity);
+    maxforce = steer.mag()*0.01; //funkar bra
     steer.limit(maxforce);
     applyForce(steer);
   }
@@ -43,7 +47,7 @@ class Particle {
     velocity.limit(maxspeed);
     location.add(velocity);
     acceleration.mult(0);
-    lifespan -= 2.0;
+    lifespan -= 2/velocity.mag();
   }
 
   void display() {
@@ -51,7 +55,7 @@ class Particle {
     translate(location.x, location.y);
     stroke(c, lifespan);
     strokeWeight(1);
-    line(0, 0, velocity.x*3, velocity.y*3);
+    line(0, 0, velocity.x*5, velocity.y*5);
     popMatrix();
   }
 

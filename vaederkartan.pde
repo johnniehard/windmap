@@ -18,6 +18,8 @@ import de.fhpotsdam.unfolding.mapdisplay.shaders.*;
 
 import java.util.Iterator;
 
+PImage mask;
+
 //Particle
 //ParticleSystem
 //FlowField
@@ -28,11 +30,13 @@ ParticleSystem ps; //sk√∂ter flowfield, partiklar och egentligen allt som inte √
 UnfoldingMap map;
 
 void setup() {
-  size(displayWidth, displayHeight, P2D);
+  size(displayWidth/2, displayHeight/2, P2D);
+  
+  mask = loadImage("mask.png");
 
- //blendMode(ADD);
+blendMode(ADD);
  // smooth();
- noSmooth();
+ //noSmooth();
  
  //map = new UnfoldingMap(this, new Microsoft.AerialProvider());
 // map = new UnfoldingMap(this, new EsriProvider.WorldGrayCanvas());
@@ -40,13 +44,17 @@ void setup() {
    map = new UnfoldingMap(this, new AcetateProvider.Basemap());
  
  //MapUtils.createDefaultEventDispatcher(this, map);
- map.zoomAndPanTo(new Location(63, 15), 5);
+ map.zoomAndPanTo(new Location(63, 15), 4);
    ps = new ParticleSystem(map);
+   background(0);
 }
 
 void draw() {
 
-  background(0);
-  map.draw();
-  ps.run();
+  background(50);
+image(mask, 0, 0, width, height);
+  //map.draw();
+ ps.run();
+
+  
 }
