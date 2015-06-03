@@ -20,6 +20,8 @@ import java.util.Iterator;
 
 PImage mask;
 
+boolean record = true;
+
 //Particle
 //ParticleSystem
 //FlowField
@@ -31,30 +33,38 @@ UnfoldingMap map;
 
 void setup() {
   size(displayWidth/2, displayHeight/2, P2D);
-  
+
   mask = loadImage("mask.png");
 
-blendMode(ADD);
- // smooth();
- //noSmooth();
- 
- //map = new UnfoldingMap(this, new Microsoft.AerialProvider());
-// map = new UnfoldingMap(this, new EsriProvider.WorldGrayCanvas());
+  frameRate(30);
+
+  blendMode(ADD);
+  // smooth();
+  //noSmooth();
+
+  //map = new UnfoldingMap(this, new Microsoft.AerialProvider());
+  // map = new UnfoldingMap(this, new EsriProvider.WorldGrayCanvas());
   //map = new UnfoldingMap(this, new EsriProvider.DeLorme());
-   map = new UnfoldingMap(this, new AcetateProvider.Basemap());
- 
- //MapUtils.createDefaultEventDispatcher(this, map);
- map.zoomAndPanTo(new Location(63, 15), 4);
-   ps = new ParticleSystem(map);
-   background(0);
+  map = new UnfoldingMap(this, new AcetateProvider.Basemap());
+
+  //MapUtils.createDefaultEventDispatcher(this, map);
+  map.zoomAndPanTo(new Location(63, 15), 4);
+  ps = new ParticleSystem(map);
+  background(0);
 }
 
 void draw() {
 
   background(50);
-image(mask, 0, 0, width, height);
+  image(mask, 0, 0, width, height);
   //map.draw();
- ps.run();
+  ps.run();
 
-  
+  if (record) {
+    saveFrame("recorded/1/record######.png");
+    println(frameCount);
+    if (frameCount>=1000) {
+      exit();
+    }
+  }
 }
