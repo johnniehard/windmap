@@ -3,7 +3,7 @@
 An attempt at recreating http://hint.fm/wind/
 
 Video:
-https://player.vimeo.com/video/129697559?loop=1
+http://vimeo.com/129697559
 
 Stuff used:
 
